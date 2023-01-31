@@ -37,7 +37,7 @@ app.use(passport.session());
 app.set('view engine','ejs');
 app.use(express.static('public'));
 app.use(mainRouter);
-
-app.listen(3000,()=>{
+const PORT = 3000 || process.env.POrt
+app.listen(PORT,()=>{
     console.log("running on port 3000");
 })
