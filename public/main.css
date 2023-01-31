@@ -1,0 +1,159 @@
+.navbar{
+  padding: 0;
+  background-color: #F5DF99!important;
+}
+
+.nav-item{
+  margin: 0 10px 0 10px;
+}
+
+body{
+  background-color: #F6FBF4;
+}
+
+.form {
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+.Button{
+    display: inline;
+    margin: 1rem;
+    width: 5rem;
+}
+
+.selectedButton{
+    color: var(--bs-btn-hover-color)!important;
+    background-color: var(--bs-btn-hover-bg)!important;
+    border-color: var(--bs-btn-hover-border-color)!important;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  div{
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  Button:disabled{
+    background-color: #ff0000!important;
+    color: white!important;
+    cursor: not-allowed!important;
+  }
+  
+  .orange{
+    background-color: darkorange;
+    color: white!important;
+  }
+  /* admin-dashboard css */
+  .selection{
+    margin: auto;
+    padding: 2rem;
+}
+.studentTable{
+    margin: 3rem auto;
+    width: 50%;
+    height: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+/* application page */
+.application{
+  position: relative;
+  margin: 3rem auto;
+  width: 70%;
+  border: 3px solid green;
+  padding-bottom: 3.2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.application > div {
+  flex: 50%; /* or - flex: 0 50% - or - flex-basis: 50% - */
+  /*demo*/
+  box-shadow: 0 0 0 1px black;
+  margin-bottom: 10px;
+}
+.Accept{
+  position: absolute;
+  right: 6rem;
+  bottom: 0.5rem;
+}
+.Reject{
+  position: absolute;
+  right: 1rem;
+  bottom:0.5rem;
+}
+
+.legend{
+  padding: 0 0 25px 0;
+}
+
+.hidden{
+  display: none!important;
+}
+/* 
+login page */
+
+.login-with-google-btn {
+  transition: background-color .3s, box-shadow .3s;
+
+  font-size: large!important;
+    
+  padding: 12px 16px 12px 42px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+  
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 10px 14px;
+  background-size: 25px;
+}
+  
+  &:hover {
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+  }
+  
+  &:active {
+    background-color: #eeeeee;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 
+      0 -1px 0 rgba(0, 0, 0, .04),
+      0 2px 4px rgba(0, 0, 0, .25),
+      0 0 0 3px #c8dafc;
+  }
+
