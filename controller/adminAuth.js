@@ -23,7 +23,7 @@ const jwt = require('jsonwebtoken')
             httpOnly: true,
             sameSite: "strict"
           });
-        res.redirect('/loginn')
+        res.redirect('/admin')
     }
     catch(err){
         res.status(500).json({error:err.message});

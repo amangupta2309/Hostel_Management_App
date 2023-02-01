@@ -1,5 +1,4 @@
 const router = require("express").Router();
- const login = require('../controller/adminAuth');
 const Admin = require("../models/schema.js").AdminInfo;
   const verifyToken = require("../middleware/auth.js");
 const authRoutes = require('./auth.js')
@@ -12,28 +11,6 @@ require("dotenv").config()
 const User = require("../models/schema.js").UserInfo;
 const Room = require("../models/schema.js").RoomInfo;
 const pendingList = require("../models/schema.js").pendingList;
-
-router.get('/auth/login',(req,res)=>{
-    res.render('admin-login',{
-     title:'AdminLogin'
-    })
-})
-//  router.post('/admin/login',login,(req,res)=>{
-//     res.redirect('/loginn');
-//  })
-router.get("/logout", (req, res) => {
-    res.cookie("token", "", {
-      maxAge: 0
-    });
-    res.redirect("/auth/login");
-  });
-
-
-router.get('/loginn',verifyToken,(req,res)=>{
-res.redirect('/admin');
-})
-
-router.use("/auth", authRoutes);
 
 
 
@@ -94,10 +71,15 @@ function isAuthenticated(req, res, next){
         });
     }
 }
-
-router.get("/studentLogin", isAuthenticated, (req, res) => {
+// router.get('/',(req,res)=>{
+//     res.render('studentLogin',{
+//         title:'Login-Page'
+//        })
+// })
+router.get("/", isAuthenticated, (req, res) => {
     res.redirect("/dashboard");
 })
+
 router.get('/dashboard', isAuthenticated, async (req,res)=>{
     var roomInfo = await Room.find({});
     roomInfo = JSON.stringify(roomInfo);
@@ -118,17 +100,17 @@ router.get("/studentLoginSuccess", passport.authenticate("google"), (req, res) =
 });
 
 
-router.get('/studentLogin',(req,res)=>{
-    res.render('studentLogin.ejs',{
-        title: 'Login',
-    });
-})
+// router.get('/studentLogin',(req,res)=>{
+//     res.render('studentLogin.ejs',{
+//         title: 'Login',
+//     });
+// })
 router.get("/studentLogout", (req, res) => {
     req.logout();
     req.session = null;
-    res.redirect("/studentLogin");
+    res.redirect("/");
 })
-
+// studentLogin
 
 
 
@@ -237,8 +219,21 @@ router.post('/api/submitRoomPreference', async (req, res) => {
 
 
 // admin Side
- 
+router.get('/auth/login',(req,res)=>{
+    res.render('admin-login',{
+     title:'AdminLogin'
+    })
+})
 
+router.get("/logout", (req, res) => {
+    res.cookie("token", "", {
+      maxAge: 0
+    });
+    res.redirect("/auth/login");
+  });
+
+router.use("/auth", authRoutes);
+ 
 router.get('/admin',verifyToken, async (req,res)=>{
     var roomInfo = await Room.find({});
     roomInfo = JSON.stringify(roomInfo);
@@ -302,7 +297,7 @@ async function acceptStudent(googleID){
     return response;
 }
 
-router.post("/api/acceptStudent", async (req, res) => {
+router.post("/api/acceptStudent", verifyToken,async (req, res) => {
     const response = await acceptStudent(req.body.googleID); 
     
     if(response) res.send({status: "OK"});
@@ -351,7 +346,7 @@ async function rejectStudent(googleID){
     })
 }
 
-router.post("/api/rejectStudent", async (req, res) => {
+router.post("/api/rejectStudent", verifyToken, async (req, res) => {
     const response = await rejectStudent(req.body.googleID); 
     
     if(response) res.send({status: "OK"});
@@ -390,14 +385,14 @@ async function removeStudent(googleID){
     return response;
 }
 
-router.post("/api/removeStudent", async (req, res) => {
+router.post("/api/removeStudent", verifyToken, async (req, res) => {
     const response = await removeStudent(req.body.googleID);
 
     if(response) res.send({status: "OK"});
     else res.send({status: "FAILED"});
 })
 
-router.post("/api/isPending", async (req, res) => {
+router.post("/api/isPending",verifyToken, async (req, res) => {
     const googleID = req.body.googleID;
     const pendingItem = await pendingList.findOne({googleID});
 
