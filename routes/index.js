@@ -29,7 +29,6 @@ passport.deserializeUser((id, done) => {
 
 
 // google auth
-
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -69,13 +68,14 @@ function isAuthenticated(req, res, next){
         res.render("./studentLogin.ejs", {
             title: "Student Login"
         });
+        // res.redirect('/');
     }
 }
-// router.get('/',(req,res)=>{
-//     res.render('studentLogin',{
-//         title:'Login-Page'
-//        })
-// })
+router.get('/',(req,res)=>{
+    res.render('studentLogin',{
+        title:'Login-Page'
+       })
+})
 router.get("/", isAuthenticated, (req, res) => {
     res.redirect("/dashboard");
 })
