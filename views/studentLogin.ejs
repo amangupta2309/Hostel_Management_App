@@ -12,28 +12,29 @@
     <title><%= title%></title>
 </head>
 <body style="background-color: #F6FBF4;">
-        <div class="container-fluid text-center" style="padding: 200px 0">
-            <div class="row">
-              <div class="col-6">
-                <img src="./csjmLogo.png">
+        <div style="height: 100vh;">
+          <div class="home-login-container">
+              <div class="main-logo">
+                <img src="./csjmLogo.png" style="width: 100%">
               </div>
-              <div class="col-6" style="align-self: center;">
-              <div>
-                <a href="/studentLogin/googleAuth">
-                    <button type="button" class="login-with-google-btn" >
-                        Sign in with Google as Student
+              <div class="login-buttons">
+                <div style="font-size: 3rem; font-weight: bold; text-align: center;">Hostel Management Portal</div>
+                <div>
+                  <a href="/studentLogin/googleAuth">
+                      <button type="button" class="login-with-google-btn" >
+                          Sign in with Google as Student
+                      </button>
+                  </a>
+                </div>
+                <div>
+                  <a href="/auth/login">
+                    <button type="button" class="btn btn-light" style="background-color:white">
+                        Sign In as Admin
                     </button>
-                </a>
+                  </a>
+                </div>
               </div>
-              <div>
-                <a href="/auth/login">
-                  <button type="button" class="btn btn-light" style="background-color:white">
-                      Sign as Admin
-                  </button>
-              </a>
-              </div>
-            </div>
-            </div>
+          </div>
         </div>
 </body>
 </html>

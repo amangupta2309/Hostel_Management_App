@@ -6,6 +6,9 @@ const cookieParser = require("cookie-parser");
 const app=express();
 
 app.use(cookieParser());
+app.use(express.static('public'));
+app.use(express.static('js'));
+app.use(express.static(path.join(__dirname, "js")));
 require("dotenv").config()
 
 const mongoose = require('mongoose');

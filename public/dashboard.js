@@ -2,6 +2,8 @@ var selectedRoomNo = "";
 var userState = user.state;
 var userRoomNumber = user.roomNumber;
 
+// console.log("testing12");
+
 
 if(userState == 2){
   document.querySelector("#currentRoomNumber").innerHTML = "Room Allotment in Progress";

@@ -10,36 +10,78 @@
     <title> <%= title%> </title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#f5df99">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="padding: 1rem; background-color:#f5df99">
         <div class="container-fluid">
             <a class="navbar-brand" style="color:black">Hostel Management Admin</a>
+            <a href="/" class="navbar-brand" style="color: black;">Home</a>
         </div>
       </nav>
-      <div class="container" style="width:50%;">
-      <div class="row" style="padding:5rem;">
-        <div>
-          <div class="card" style="background-color:#f6fbf4">
-            <div class="card-body">
-              <form id="myForm" action="/auth/login" method='post' style="padding:5rem;">
-                <div class="form-group" style="padding:1rem">
-                  <label for="username">Username:</label>
-                  <input type="text" id="username" name="username" class="form-control">
+      <div style="display: flex; justify-content: center; align-items: center; background-color: #f6fbf4; height: 100vh">
+        <div class="container" style="width:100%; max-width: 500px;">
+          <div class="row">
+            <div>
+              <div class="card" style="background-color: #FFEAA7">
+                <div class="card-body">
+                  <form id="adminLoginForm" method="POST" action="/auth/login" style="padding:3rem;">
+                    <div class="form-group" style="padding:1rem">
+                      <label for="username">Username:</label>
+                      <input type="text" id="username" name="username" class="form-control">
+                    </div>
+                    <div class="form-group" style="padding:1rem">
+                      <label for="password">Password:</label>
+                      <input type="password" id="password" name="password" class="form-control">
+                    </div>
+                    <div style="margin:1rem">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                    </div>
+                  </form>
                 </div>
-                <div class="form-group" style="padding:1rem">
-                  <label for="password">Password:</label>
-                  <input type="password" id="password" name="password" class="form-control">
-                </div>
-                <div style="margin:1rem">
-                <input type="submit" value="Submit" class="btn btn-primary btn-block">
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    
-</body>
+    <!-- <script type='text/javascript' src="../public/admin-login.js"></script> -->
+  </body>
 </html>
+
+<script>
+    document.getElementById("adminLoginForm").addEventListener('submit', function(event){
+    event.preventDefault();
+    
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    const formData = {
+      username,
+      password
+    }
+    console.log(formData);
+
+    // Send a POST request to the server
+    fetch('/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(async(res) => {
+      if(!res.ok){
+        const data = await res.json();
+        alert(data.msg);
+      }
+      else{
+        window.location.href = "/admin";
+      }
+    }) // assuming the server responds with JSON
+    .catch(error => {
+        console.error('Error:', error);
+    });
+  })
+</script>
+
+
+
+
 
 

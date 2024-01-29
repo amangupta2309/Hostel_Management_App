@@ -14,6 +14,7 @@ const jwt = require('jsonwebtoken')
             next();
            }
            catch(err){
+            res.redirect("/auth/login");
             res.status(500).json({error: err.message});
            }
 }

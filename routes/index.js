@@ -29,6 +29,8 @@ passport.deserializeUser((id, done) => {
 
 
 // google auth
+
+// https://hostel-management-app-23.onrender.com/studentLoginSuccess
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -65,10 +67,10 @@ function isAuthenticated(req, res, next){
         next();
     }
     else{
-        res.render("./studentLogin.ejs", {
-            title: "Student Login"
-        });
-        // res.redirect('/');
+        // res.render("./studentLogin.ejs", {
+        //     title: "Student Login"
+        // });
+        res.redirect('/');
     }
 }
 router.get('/',(req,res)=>{
@@ -131,7 +133,6 @@ async function updateUserInformation(userInfo){
     currentUser.save((err, res) => {
         if(err){
             response = false;
-            console.log(err);
         }
     })
 
@@ -235,6 +236,7 @@ router.get("/logout", (req, res) => {
 router.use("/auth", authRoutes);
  
 router.get('/admin',verifyToken, async (req,res)=>{
+    
     var roomInfo = await Room.find({});
     roomInfo = JSON.stringify(roomInfo);
     res.render('admin-dashboard',{
